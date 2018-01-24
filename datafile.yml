@@ -1,0 +1,32 @@
+---
+devices:
+        - {name: "router1", mgmt_ip: "192.168.2.101", router_id: "1.1.1.1", role: "spine"}
+        - {name: "router2", mgmt_ip: "192.168.2.103", router_id: "3.3.3.3", role: "leaf"}
+commands:
+        spine:
+             -  show ip int brief
+             -  show ip ospf neighbor
+        leaf:
+             -  show run | in router-id
+             -  show run | in router bgp
+        rr:
+             -  show command1
+             -  show command2
+        ce:
+             -  show command1
+             -  show command2
+
+mode: ssh
+
+SW_platform: NXOS
+
+wait_timer: 60
+
+kill_timer: 180
+
+log_dir: "vta/logs"
+
+userid: cisco
+
+password: cisco
+...
